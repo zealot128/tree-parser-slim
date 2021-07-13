@@ -1,0 +1,135 @@
+========================
+Content Ruby
+=========================
+
+div
+  |Content #{ some Ruby here }} Content
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+    (pipe_content (content) (ruby) (content))))
+
+
+========================
+Conditionals etc.
+=========================
+
+- if foo = 2
+  div
+
+---
+
+(source_file
+  (ruby_code_without_output
+    (ruby)
+    (children
+    (tag (tag_name))
+    )
+  )
+)
+
+========================
+Ruby expression with output
+=========================
+
+= foo do
+  div
+
+---
+
+(source_file
+  (ruby_code_with_output
+    (ruby)
+    (children
+     (tag (tag_name))
+    )
+))
+
+========================
+Ruby expression with unescaped output
+=========================
+
+== foo.bar
+
+---
+
+(source_file
+  (ruby_code_with_unescaped_output
+    (ruby)
+))
+
+========================
+Ruby multiline with ,
+=========================
+
+= foo a: 2,
+  b: 3
+
+---
+
+(source_file
+  (ruby_code_with_output
+    (ruby)
+))
+
+========================
+Ruby attributes in braces
+=========================
+
+a href=(foo bar blub)
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+      (attribute (attribute_name) (ruby))
+))
+
+========================
+Ruby attributes without braces
+=========================
+
+a href=foo_path(bar)
+
+---
+
+(source_file
+  (tag
+    (tag_name)
+      (attribute (attribute_name) (ruby))
+))
+
+
+========================
+Block Javascript
+=========================
+
+javascript:
+  foo.bar doesnt matter
+  all is js
+div
+
+---
+
+(source_file
+  (javascript_block (javascript))
+  (tag (tag_name))
+)
+
+========================
+Block Scss, TODO: ruby: javascript: css: sass: scss: less: coffee: markdown: textile: rdoc:
+=========================
+
+scss:
+  foo.bar doesnt matter
+  all is js
+
+---
+
+(source_file
+  (scss_block (scss))
+)
